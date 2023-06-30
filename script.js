@@ -1,5 +1,6 @@
 'use strict';
 
+//////////////////////////////////////////////////
 // constructor function
 // 1. New {} is created
 // 2. function is called, this = {}
@@ -45,7 +46,11 @@ Array.prototype.unique = function () {
 };
 console.log(arr.unique());
 console.log((x => x + 1).__proto__ === Function.prototype);
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
 
+//////////////////////////////////////////////////
 // Coding Challenge #1
 const Car = function (make, speed) {
   this.make = make;
@@ -70,3 +75,37 @@ mercedes.accelerate();
 mercedes.accelerate();
 mercedes.brake();
 mercedes.accelerate();
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+//////////////////////////////////////////////////
+// ES6 Classes - use constructor function behind the scene
+/** Class expression */
+const PersonClass2 = class {
+  // same as function expession
+};
+
+/** Class declaration */
+class PersonClass {
+  // same as function declaration
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  calcAge() {
+    console.log(2023 - this.birthYear);
+  }
+}
+const huy = new PersonClass('Huy', 2006);
+console.log(huy);
+console.log(huy.__proto__);
+console.log(huy.__proto__ === PersonClass.prototype);
+console.log(huy.calcAge());
+PersonClass.prototype.greet = function () {
+  console.log(`Hey, ${this.firstName}!`);
+};
+huy.greet();
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
