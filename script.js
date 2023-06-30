@@ -193,6 +193,7 @@ console.log(ford.speed);
 
 //////////////////////////////////////////////////
 // Inheritance Between Classes
+// 1. constructor function
 const Person_ = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
@@ -214,6 +215,24 @@ Student.prototype.introduce = function () {
 const den = new Student('Dong', 1991, 'CS');
 den.calcAge();
 den.introduce();
+
+// 2. ES6 classes
+class StudentClass extends Person_ {
+  constructor(firstName, birthYear, course) {
+    super(firstName, birthYear);
+    this.course = course;
+  }
+  introduce() {
+    console.log(`I'm ${this.firstName} and I study ${this.course}.`);
+  }
+  calcAge() {
+    console.log(`I was borned in ${this.birthYear}. How old am I?`);
+  }
+}
+const dong = new StudentClass('Dong', 1991, 'CS');
+console.log(dong);
+dong.calcAge();
+dong.introduce();
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
