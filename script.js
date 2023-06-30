@@ -290,3 +290,110 @@ tesla.accelerate();
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
+
+// Private Class Fields and Methods
+class Country {
+  //////////////////////////////////////////////////
+  // i. Public Fields
+  numCities = 64;
+  // 1. Private Fields
+  #secret;
+  //////////////////////////////////////////////////
+
+  //////////////////////////////////////////////////
+  // ii. Public Static Fields
+  static district = `At least 1!`;
+  // 2.  Private Static Fields
+  static #minDistrict = 10;
+  //////////////////////////////////////////////////
+
+  constructor(name, population, secret) {
+    this.name = name;
+    this.population = population;
+    this.#secret = secret;
+  }
+
+  /////////////////////////////////////
+  // iii. Public Getters
+  get secret() {
+    return this.#getSecretHelper;
+  }
+  // 3. Private Getters
+  get #getSecretHelper() {
+    return this.#secret;
+  }
+  /////////////////////////////////////
+
+  /////////////////////////////////////
+  // iv. Public Setters
+  set secret(val) {
+    this.#setSecretHelper = val;
+  }
+  // 4. Private Setters
+  set #setSecretHelper(val) {
+    this.#secret = val;
+  }
+  /////////////////////////////////////
+
+  /////////////////////////////////////
+  // v. Public Methods
+  intro() {
+    console.log(this.#introHelper());
+  }
+  // 5. Private Methods
+  #introHelper(str) {
+    return `${this.name} has population of ${this.population}${this.#secret}`;
+  }
+  /////////////////////////////////////
+
+  /////////////////////////////////////
+  // vi. Public Static Methods
+  static hey() {
+    console.log(this.#heyHelper() + '👋' + `.`);
+  }
+  // 6. Private Static Methods
+  static #heyHelper() {
+    return 'Hey there ';
+  }
+  /////////////////////////////////////
+
+  /////////////////////////////////////
+  // vii. Public Static Getters
+  static get biggestCity() {
+    return Country.#biggestCityHelper;
+  }
+  // 7. Private Static Getters
+  static get #biggestCityHelper() {
+    return `Ho Chi Minh. District: ${Country.#minDistrict}`;
+  }
+
+  /////////////////////////////////////
+  // viii. Public Static Setters
+  static set minDistrict(val) {
+    Country.minDistrictHelper = val;
+  }
+  // 8. Private Static Setters
+  static set minDistrictHelper(val) {
+    Country.#minDistrict = val;
+  }
+  /////////////////////////////////////
+}
+const vn = new Country('Viet Nam', 100, '???');
+console.dir(vn);
+
+console.log(vn.numCities);
+
+console.log(Country.district);
+
+console.log(vn.secret);
+vn.secret = '!!!';
+console.log(vn.secret);
+
+vn.intro();
+
+Country.hey();
+
+console.log(Country.biggestCity);
+
+Country.minDistrict = 99;
+console.log(Country.biggestCity);
