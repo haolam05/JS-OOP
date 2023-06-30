@@ -13,7 +13,7 @@ const Person = function (firstName, birthYear) {
 Person.hi = function (person) {
   console.log('Hi ' + person.firstName);
   console.log(this);
-}
+};
 const hao = new Person('Hao', 2001);
 const cat = new Person('Cat', 2002);
 console.log(hao, cat);
@@ -132,6 +132,28 @@ huy.greet();
 console.log(huy.age);
 console.log(huy.fullName);
 console.log(PersonClass.hey(huy));
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+//////////////////////////////////////////////////
+// Object.create
+const PersonPrototype = {
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+  calcAge() {
+    console.log(2023 - this.birthYear);
+  },
+};
+const lam = Object.create(PersonPrototype);
+lam.init('Lam', 2001);
+console.log(lam.__proto__ === PersonPrototype);
+console.log(lam);
+console.log(lam.__proto__);
+console.log(lam.__proto__.__proto__);
+console.log(lam.__proto__.__proto__.__proto__);
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
