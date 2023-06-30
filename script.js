@@ -190,3 +190,30 @@ console.log(ford.speed);
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
+
+//////////////////////////////////////////////////
+// Inheritance Between Classes
+const Person_ = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+Person_.prototype.calcAge = function () {
+  console.log(2023 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+Student.prototype = Object.create(Person_.prototype);
+Student.prototype.constructor = Student;
+Student.prototype.introduce = function () {
+  console.log(`I'm ${this.firstName} and I study ${this.course}.`);
+};
+
+const den = new Student('Dong', 1991, 'CS');
+den.calcAge();
+den.introduce();
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
