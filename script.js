@@ -10,10 +10,15 @@ const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
 };
+Person.hi = function (person) {
+  console.log('Hi ' + person.firstName);
+  console.log(this);
+}
 const hao = new Person('Hao', 2001);
 const cat = new Person('Cat', 2002);
 console.log(hao, cat);
 console.log(hao instanceof Person);
+console.log(Person.hi(hao));
 
 // Prototypes
 console.log(Person.prototype);
@@ -89,23 +94,44 @@ const PersonClass2 = class {
 /** Class declaration */
 class PersonClass {
   // same as function declaration
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
+  // Instance methods
   calcAge() {
     console.log(2023 - this.birthYear);
   }
+  // Getters
+  get age() {
+    return 2023 - this.birthYear;
+  }
+  get fullName() {
+    return this._fullName;
+  }
+  // Setters
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert('NOT a full name!');
+  }
+  // Static methods
+  static hey(person) {
+    console.log(`Hey ${person.fullName}`);
+    console.log(this);
+  }
 }
-const huy = new PersonClass('Huy', 2006);
+const huy = new PersonClass('Huy Lam', 2006);
 console.log(huy);
 console.log(huy.__proto__);
 console.log(huy.__proto__ === PersonClass.prototype);
 console.log(huy.calcAge());
 PersonClass.prototype.greet = function () {
-  console.log(`Hey, ${this.firstName}!`);
+  console.log(`Hey, ${this.fullName}!`);
 };
 huy.greet();
+console.log(huy.age);
+console.log(huy.fullName);
+console.log(PersonClass.hey(huy));
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
