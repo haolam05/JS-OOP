@@ -291,6 +291,7 @@ tesla.accelerate();
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 
+//////////////////////////////////////////////////
 // Private Class Fields and Methods
 class Country {
   //////////////////////////////////////////////////
@@ -397,3 +398,45 @@ console.log(Country.biggestCity);
 
 Country.minDistrict = 99;
 console.log(Country.biggestCity);
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+
+//////////////////////////////////////////////////
+// Coding Challenge #4
+class EVCl extends CarCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(
+      `${this.make} is going at ${this.speed} km/h, with a charge of ${
+        this.#charge
+      }%`
+    );
+    return this;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+}
+
+const rivian = new EVCl('Rivian', 120, 23);
+console.dir(rivian);
+rivian.accelerate().accelerate().brake().chargeBattery(90).accelerate();
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
+//////////////////////////////////////////////////
