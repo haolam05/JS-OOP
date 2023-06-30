@@ -31,3 +31,17 @@ Person.prototype.species = 'Homo Sapiens';
 console.log(hao.species, cat.species);
 console.log(hao.hasOwnProperty('birthYear'));
 console.log(hao.hasOwnProperty('species'));
+console.log(hao.__proto__);
+console.log(hao.__proto__.__proto__);
+console.log(hao.__proto__.__proto__.__proto__);
+// Array
+const arr = [1, 2, 3, 4, 1, 2, 3, 4, 5]; // new Array === []
+console.log(arr.__proto__ === Array.prototype);
+console.log(arr.__proto__);
+console.log(arr.__proto__.__proto__);
+console.log(arr.__proto__.__proto__.__proto__);
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+console.log(arr.unique());
+console.log((x => x + 1).__proto__ === Function.prototype);
