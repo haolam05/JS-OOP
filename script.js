@@ -233,6 +233,31 @@ const dong = new StudentClass('Dong', 1991, 'CS');
 console.log(dong);
 dong.calcAge();
 dong.introduce();
+
+// 3. Object.create
+// const PersonPrototype = {
+//   init(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   },
+//   calcAge() {
+//     console.log(2023 - this.birthYear);
+//   },
+// };
+const StudentPrototype = Object.create(PersonPrototype);
+StudentPrototype.init = function (firstName, birthYear, course) {
+  PersonPrototype.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+StudentPrototype.introduce = function () {
+  console.log(
+    `I'm ${this.firstName}, I was borned in ${this.birthYear} and I study ${this.course}.`
+  );
+};
+const ti = Object.create(StudentPrototype);
+ti.init('Cat', 2002, 'CE');
+ti.calcAge();
+ti.introduce();
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
 //////////////////////////////////////////////////
